@@ -1,15 +1,33 @@
 <component name="libraryTable">
   <library name="GOPATH &lt;niukecode&gt;">
     <CLASSES>
-      <root url="file://$PROJECT_DIR$/../runc" />
-      <root url="file://$PROJECT_DIR$/../webCrawler" />
-      <root url="file://$PROJECT_DIR$/../golang.org" />
+      <root url="file://$PROJECT_DIR$/../../gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../../devck" />
+      <root url="file://$PROJECT_DIR$/../../niukecode" />
+      <root url="file://$PROJECT_DIR$/../../golang.org" />
+      <root url="file://$PROJECT_DIR$/../../hs" />
+      <root url="file://$PROJECT_DIR$/../../h" />
+      <root url="file://$PROJECT_DIR$/.." />
+      <root url="file://$PROJECT_DIR$/../../ps" />
+      <root url="file://$PROJECT_DIR$/../../.idea" />
+      <root url="file://$PROJECT_DIR$/../../connsql" />
+      <root url="file://$PROJECT_DIR$/../../webCrawler" />
+      <root url="file://$PROJECT_DIR$/../../github.com" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="file://$PROJECT_DIR$/../runc" />
-      <root url="file://$PROJECT_DIR$/../webCrawler" />
-      <root url="file://$PROJECT_DIR$/../golang.org" />
+      <root url="file://$PROJECT_DIR$/../../gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../../devck" />
+      <root url="file://$PROJECT_DIR$/../../niukecode" />
+      <root url="file://$PROJECT_DIR$/../../golang.org" />
+      <root url="file://$PROJECT_DIR$/../../hs" />
+      <root url="file://$PROJECT_DIR$/../../h" />
+      <root url="file://$PROJECT_DIR$/.." />
+      <root url="file://$PROJECT_DIR$/../../ps" />
+      <root url="file://$PROJECT_DIR$/../../.idea" />
+      <root url="file://$PROJECT_DIR$/../../connsql" />
+      <root url="file://$PROJECT_DIR$/../../webCrawler" />
+      <root url="file://$PROJECT_DIR$/../../github.com" />
     </SOURCES>
     <excluded>
       <root url="file://$PROJECT_DIR$" />
