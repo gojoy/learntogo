@@ -420,5 +420,5 @@ func Count1nums()  {
 		}
 		num=num>>1
 	}
-	fmt.Printf("%d",count)
+	fmt.Printf("%d\n",count)
 }
