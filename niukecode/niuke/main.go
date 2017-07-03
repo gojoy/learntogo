@@ -4,14 +4,14 @@ package main
 import (
 	"fmt"
 	"time"
-	"niukecode/huawei"
+	"learntogo/niukecode/huawei"
 )
 
 //this is main
 func main() {
 	t1:=time.Now()
 
-	huawei.CodeLoger()
+	huawei.CheckPasswd()
 
 	fmt.Println(time.Now().Sub(t1))
 

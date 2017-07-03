@@ -190,18 +190,130 @@ func CodeLoger() {
 	scaner:=bufio.NewScanner(os.Stdin)
 	for scaner.Scan() {
 		str=scaner.Text()
-		dealMsg(str)
+		astr:=strings.Split(str," ")
+		for i:=0;i<len(astr)-2;i+=2 {
+			dealMsg(astr[i]+" "+astr[i+1])
+		}
+		//dealMsg(str)
 	}
 	if err := scaner.Err(); err != nil {
 		fmt.Fprintln(os.Stderr, "reading standard input:", err)
 	}
 
-	for e:=msgList.Front();e!=nil;e=e.Next() {
+	for e:=msgList.Back();e!=nil;e=e.Prev() {
 		vl,ok:=e.Value.(putlog)
 		if ok {
-			fmt.Printf("%s %d %d\n",vl.name,vl.line,vl.num)
+			fmt.Printf("%s %d %d ",vl.name,vl.line,vl.num)
 		}
 	}
+}
 
+func RecordCodeFile() {
+	var (
+		fullPath string
+		line int
+		n int
+		err error
+	)
+	n,err=fmt.Scanf("%s %d",&fullPath,&line)
+	for err==nil && n==2 {
+		fmt.Printf("n is %v,path is %v,line is %v,%v\n",n,fullPath,line,err)
+		n,err=fmt.Scanf("%s %d",&fullPath,&line)
+	}
+	fmt.Printf("n is %v,path is %v,line is %v,%v\n",n,fullPath,line,err)
+}
 
+//密码要求:
+//
+//
+//
+//1.长度超过8位
+//
+//
+//
+//2.包括大小写字母.数字.其它符号,以上四种至少三种
+//
+//
+//
+//3.不能有相同长度超2的子串重复
+//
+//
+//
+//说明:长度超过2的子串
+//
+//
+//输入描述:
+//一组或多组长度超过2的子符串。每组占一行
+//
+//
+//输出描述:
+//如果符合要求输出：OK，否则输出NG
+//示例1
+//输入
+//
+//021Abc9000
+//021Abc9Abc1
+//021ABC9000
+//021$bc9000
+//输出
+//
+//OK
+//NG
+//NG
+//OK
+func CheckPasswd() {
+	var (
+		pwd string
+		n int
+		err error
+
+	)
+
+	checkok:= func(s string) bool{
+		if len(s)<8 {
+			return false
+		}
+		mutl:=make([]int,4)
+		for i:=0;i<len(s);i++ {
+			b:=s[i]
+			if b>='a'&& b<='z' {
+				//fmt.Printf("az\n")
+				mutl[0]=1
+			}else if b>='A' && b<='Z' {
+				//fmt.Printf("AZ\n")
+				mutl[1]=1
+			}else if b>='0' && b<='9' {
+				//fmt.Printf("09\n")
+				mutl[2]=1
+			} else {
+				//fmt.Printf("other\n")
+				mutl[3]=1
+			}
+		}
+		m:=mutl[0]+mutl[1]+mutl[2]+mutl[3]
+		//fmt.Println(m)
+		if m<3 {
+
+			return false
+		}
+
+		for i:=0;i<len(s)-2;i++ {
+			if strings.Contains(s[i+1:],s[i:i+3]) {
+				//fmt.Printf("sub error\n")
+				return false
+			}
+		}
+		return true
+	}
+
+	n,err=fmt.Scanf("%s",&pwd)
+	for n!=0 && err==nil {
+		if checkok(pwd) {
+			fmt.Printf("OK\n")
+		} else {
+			fmt.Printf("NG\n")
+		}
+		n,err=fmt.Scanf("%s",&pwd)
+	}
+	logg.Println(err)
 }
