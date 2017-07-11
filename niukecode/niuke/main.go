@@ -11,10 +11,10 @@ import (
 func main() {
 	t1:=time.Now()
 
-	huawei.CheckPasswd()
+	print("begin\n")
+	huawei.Drink()
 
 	fmt.Println(time.Now().Sub(t1))
-
 }
 
 
