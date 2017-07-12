@@ -11,8 +11,8 @@ import (
 func main() {
 	t1:=time.Now()
 
-	print("begin\n")
-	huawei.Drink()
+	//print("begin\n")
+	huawei.LCS()
 
 	fmt.Println(time.Now().Sub(t1))
 }
