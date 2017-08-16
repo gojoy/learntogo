@@ -1,0 +1,18 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;learntogo&gt;">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../runc" />
+      <root url="file://$PROJECT_DIR$/../webCrawler" />
+      <root url="file://$PROJECT_DIR$/../golang.org" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../runc" />
+      <root url="file://$PROJECT_DIR$/../webCrawler" />
+      <root url="file://$PROJECT_DIR$/../golang.org" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+    </excluded>
+  </library>
+</component>
