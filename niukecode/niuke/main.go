@@ -5,12 +5,14 @@ import (
 	"fmt"
 	"time"
 	"learntogo/niukecode/huawei"
+
 )
 
 //this is main
 func main() {
 	t1:=time.Now()
 
+	
 	//print("begin\n")
 	huawei.LCS()
 

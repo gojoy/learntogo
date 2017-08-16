@@ -90,8 +90,8 @@ func cutBottomUp(n int,p []int) int {
 //Z=<B,C,D,B> X=<A,B,C,B,D,A> 则Z为X的子序列 只需要出现顺序相同，不需要相邻
 func LCS()   {
 	var (
-		X string="ABCBDAB"
-		Y string="BDCABA"
+		X string="ABCBDABD"
+		Y string="BDCABADC"
 		//X string="A"
 		//Y string="A"
 	)
@@ -132,6 +132,48 @@ func getLCSByAry(x,y string) int {
 			}
 		}
 	}
-	fmt.Printf("r is %v\n",res)
+	for i:=0;i<=lx;i++ {
+		fmt.Printf("%v\n",res[i])
+	}
+
+	r:=putOut(res,x,y)
+	for i:=len(r)-1;i>=0;i-- {
+		v:=r[i].(byte)
+		fmt.Printf("%c",v)
+	}
 	return res[lx][ly]
+}
+
+func putOut(res [][]int,xt,yt string) []interface{} {
+	r:=make([]interface{},0)
+	if len(res)==0 {
+		fmt.Printf("error:nil res\n")
+		return nil
+	}
+	x:=len(res)
+	y:=len(res[0])
+	i:=x-1
+	j:=y-1
+	fmt.Printf("i is %d,j is %d\n",i,j)
+	fmt.Printf("x is %c,y is %c\n",xt[x-2],yt[y-2])
+	for i>0 && j>0 {
+			//fmt.Printf("i is %d,j is %d\n",i,j)
+			if  xt[i-1]==yt[j-1] {
+				fmt.Printf("i  %d,j  %d\n",i,j)
+				r=append(r,xt[i-1])
+				fmt.Printf("%c",xt[i-1])
+				i--
+				j--
+				fmt.Printf("double\n")
+			} else if res[i-1][j]>=res[i][j-1] {
+				fmt.Printf("i  %d,j  %d\n",i,j)
+				fmt.Printf("up\n")
+				i--
+			}else {
+				fmt.Printf("i  %d,j  %d\n",i,j)
+				fmt.Printf("left\n")
+				j--
+			}
+	}
+	return r
 }

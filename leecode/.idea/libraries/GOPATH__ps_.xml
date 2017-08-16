@@ -1,0 +1,38 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;ps&gt;">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../protobuf" />
+      <root url="file://$PROJECT_DIR$/../gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../devck" />
+      <root url="file://$PROJECT_DIR$/../golang.org" />
+      <root url="file://$PROJECT_DIR$/../hs" />
+      <root url="file://$PROJECT_DIR$/../h" />
+      <root url="file://$PROJECT_DIR$/../.idea" />
+      <root url="file://$PROJECT_DIR$/../example" />
+      <root url="file://$PROJECT_DIR$/../connsql" />
+      <root url="file://$PROJECT_DIR$/../webCrawler" />
+      <root url="file://$PROJECT_DIR$/../github.com" />
+      <root url="file://$PROJECT_DIR$/../phaul" />
+      <root url="file://$PROJECT_DIR$/../learntogo" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../protobuf" />
+      <root url="file://$PROJECT_DIR$/../gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../devck" />
+      <root url="file://$PROJECT_DIR$/../golang.org" />
+      <root url="file://$PROJECT_DIR$/../hs" />
+      <root url="file://$PROJECT_DIR$/../h" />
+      <root url="file://$PROJECT_DIR$/../.idea" />
+      <root url="file://$PROJECT_DIR$/../example" />
+      <root url="file://$PROJECT_DIR$/../connsql" />
+      <root url="file://$PROJECT_DIR$/../webCrawler" />
+      <root url="file://$PROJECT_DIR$/../github.com" />
+      <root url="file://$PROJECT_DIR$/../phaul" />
+      <root url="file://$PROJECT_DIR$/../learntogo" />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+    </excluded>
+  </library>
+</component>
