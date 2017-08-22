@@ -35,7 +35,7 @@ func dealtwo(a []int) int  {
 		return 3-l
 	}
 	sort.Ints(a)
-	for i:=0;i<l-1;i++ {
+	for i:=0;i<l-1 && l%3==0;i++ {
 		j:=i+1
 		if (count%3!=0) {
 			if a[j]-a[i]>10 {
@@ -49,6 +49,12 @@ func dealtwo(a []int) int  {
 		}else {
 			i++
 			j=i+1
+			if i==l-2 {
+				i++
+				a=append(a,a[i]+10)
+				l++
+				res++
+			}
 		}
 	}
 	return res
