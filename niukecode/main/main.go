@@ -4,8 +4,9 @@ package main
 import (
 	"fmt"
 	"time"
-	"learntogo/niukecode/huawei"
+	//"learntogo/niukecode/huawei"
 
+	"learntogo/niukecode/toutiao"
 )
 
 //this is main
@@ -14,7 +15,8 @@ func main() {
 
 	
 	//print("begin\n")
-	huawei.LCS()
+	//huawei.LCS()
+	toutiao.Two()
 
 	fmt.Println(time.Now().Sub(t1))
 }
