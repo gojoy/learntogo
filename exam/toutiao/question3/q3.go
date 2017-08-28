@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-//idea 0:id 1:创建时间 2:优先级 3:需要时间 4:是否已交付程序员处理
+//idea 0:id 1:创建时间 2:优先级 3:需要时间 4:是否已交付程序员处理 5：预计完成时间
 type idea [5]int
 
 type programmer struct {
