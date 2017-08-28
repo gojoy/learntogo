@@ -30,3 +30,5 @@ void clear(void)；
 {0x02, false},
 {0x03, false},
 {0x04, false}
+
+21:43
