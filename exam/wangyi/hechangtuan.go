@@ -12,14 +12,23 @@ func Q7()  {
 		fmt.Scanf("%d",&s)
 		sts[i]=s
 	}
-	fmt.Scanln(&k,&d)
+	nu,_:=fmt.Scanln(&k,&d)
+	if nu!=2 {
+		fmt.Scanln(&k,&d)
+	}
+	//fmt.Printf("num is %d,err is %v\n",nu,err)
+	fmt.Printf("k is %d,s is %v\n",k,sts)
 	fmt.Println(maxSubSubseqence(sts,d,k))
 }
 
 func maxSubSubseqence(s []int,d,k int) int  {
+	if len(s)==1 {
+		return s[0]
+	}
+	fmt.Printf("k is %d\n",k)
 	l:=len(s)
 	if l<k {
-		logg.Printf("k too big")
+		//logg.Printf("k too big")
 		return -1
 	}
 
@@ -38,8 +47,11 @@ func maxSubSubseqence(s []int,d,k int) int  {
 	for i:=1;i<len(maxsub);i++ {
 		maxsub[i][1]=s[0]
 	}
+	logg.Printf("x is %d,y is %d\n",len(maxsub),len(maxsub[0]))
 
-	for i:=2;i<len(maxsub[0]);i++ {
+	showMutliArray(maxsub)
+	for i:=1;i<len(maxsub[0]);i++ {
+		logg.Printf("i is %d\n",i)
 		//if s[i-1]>maxsub[1][i-1] {
 		//	maxsub[1][i]=s[i-1]
 		//}
@@ -48,24 +60,24 @@ func maxSubSubseqence(s []int,d,k int) int  {
 	}
 
 	for kk:=2;kk<len(maxsub);kk++ {
-		logg.Printf("kk is %d\n",kk)
+		//logg.Printf("kk is %d\n",kk)
 		for nn:=k;nn<len(maxsub[0]);nn++ {
-			logg.Printf("nn is %d\n",nn)
+			//logg.Printf("nn is %d\n",nn)
 			selects:=make([]int,0)
 			selects=append(selects,maxsub[kk-1][nn-1])
 			for step:=1;step<d  ;step++ {
 				if nn-step-1<0 {
 					break
 				}
-				logg.Printf("step is %d,y is %d,x is %d\n",step,kk-2,nn-step-1)
+				//logg.Printf("step is %d,y is %d,x is %d\n",step,kk-2,nn-step-1)
 				selects=append(selects,maxsub[kk-2][nn-step-1]*s[nn-step-1]*s[nn-1])
 			}
 			maxsub[kk][nn]=maxslice(selects)
-			logg.Printf("maxsub x is %d,y is %d,value is %d\n",kk,nn,maxsub[kk][nn])
+			//logg.Printf("maxsub x is %d,y is %d,value is %d\n",kk,nn,maxsub[kk][nn])
 		}
 	}
 
-	showMutliArray(maxsub)
+	//showMutliArray(maxsub)
 	return maxslice(maxsub[len(maxsub)-1])
 }
 
