@@ -27,6 +27,7 @@ func main() {
 	getres(a,n)
 }
 
+//生成kolakoski 序列
 func getres(a []int, n int) {
 	var (
 		out,in,lengh int
