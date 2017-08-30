@@ -1,7 +1,10 @@
 package main
 
-import "learntogo/exam/wangyi"
+import (
+	_"learntogo/exam/wangyi"
+	"learntogo/exam/sougou"
+)
 
 func main() {
-	wangyi.Q8byscanf()
+	sougou.Testsort()
 }
