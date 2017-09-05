@@ -1,10 +1,13 @@
 package main
 
 import (
-	"learntogo/exam/pearls"
+
+	"learntogo/exam/wangyi"
 	"fmt"
 )
 
 func main() {
-	fmt.Println(pearls.RandIntByMap(10,200))
+	//fmt.Println(pearls.RandIntByMap(10,200))
+	fmt.Printf("begin\n")
+	wangyi.Savexiaoyi()
 }
