@@ -22,6 +22,7 @@ func RandIntNum(m, n int) []int	 {
 	return res
 }
 
+//使用map结构
 func RandIntByMap(m,n int) []int  {
 	set:=make(map[int]bool)
 	res:=make([]int,m)
