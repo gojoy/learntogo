@@ -1,10 +1,10 @@
 package main
 
 import (
-	_"learntogo/exam/wangyi"
-	"learntogo/exam/sougou"
+	"learntogo/exam/pearls"
+	"fmt"
 )
 
 func main() {
-	sougou.Testsort()
+	fmt.Println(pearls.RandIntByMap(10,200))
 }

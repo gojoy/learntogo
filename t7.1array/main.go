@@ -3,6 +3,7 @@ package main
 
 import (
 	"fmt"
+	"learntogo/t7.1array/list"
 )
 
 var (
@@ -23,7 +24,7 @@ var (
 	pi            = []int{1, 2, 3, 6, 40, 67, 7}
 )
 
-func main() {
+func testslice() {
 	//*p2 = p1
 	fmt.Printf("in main p1 type is %T,p2(new) type is %T,p type is %T.slice type is %T\n", p1, p2, p, slice1)
 	fmt.Println("begin\n")
@@ -49,4 +50,8 @@ func main() {
 	t714fanz(str)
 	fmt.Printf("type is %T,length is %d\n", pi, len(pi))
 	mpsort(pi)
+}
+
+func main() {
+	list.TestList()
 }
