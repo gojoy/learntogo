@@ -8,9 +8,9 @@ func Q2()  {
 		count int=0
 	)
 	l=0
-	r=10000000
+	r=10000
 	for i:=l;i<r;i++ {
-		if ismagicnum(i) {
+		if ism(i,0,0) {
 			count++
 		}
 	}
