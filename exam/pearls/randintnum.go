@@ -37,3 +37,23 @@ func RandIntByMap(m,n int) []int  {
 	}
 	return res
 }
+
+//给定n面的骰子，每面概率在数组中，模拟摇骰子
+func Roll( s []float32 ) int {
+	l:=len(s)
+	temp:=make([]float32,l-1)
+	temp[0]=0
+	temp[l-2]=1
+	for i:=1;i<l-1;i++ {
+		temp[i]=temp[i-1]+s[i]
+	}
+	//fmt.Printf("temp is %v\n",temp)
+	r:=rand.Float32()
+	//fmt.Printf("r is %v\n",r)
+	for i:=0;i<l-1;i++ {
+		if r < temp[i] {
+			return i
+		}
+	}
+	return l-1
+}

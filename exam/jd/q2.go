@@ -2,19 +2,20 @@ package jd
 
 import "fmt"
 
-func Q2()  {
+func Q2() int {
 	var (
 		l,r int
 		count int=0
 	)
 	l=0
-	r=10000000
+	r=1000000
 	for i:=l;i<r;i++ {
 		if ismagicnum(i) {
 			count++
 		}
 	}
 	fmt.Println(count)
+	return count
 }
 
 func ismagicnum(n int) bool  {

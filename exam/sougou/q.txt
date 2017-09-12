@@ -10,3 +10,63 @@
 第一行为点个数n，后跟n行，每行一个双精度浮点数，表示点的角度（小数点后保留8位），例如输入样例中为4个点的输入：
 
 输出：
+
+
+package main
+
+import (
+    "fmt"
+    )
+
+
+func main() {
+	var (
+		n int
+		num float64
+	)
+	fmt.Scanln(&n)
+	points:=make([]float64,n)
+	for i:=0;i<n;i++ {
+		fmt.Scanln(&num)
+		points[i]=num
+	}
+
+	fmt.Printf("%.8f\n",maxdistance(points ))
+}
+
+
+func maxdistance(points []float64) float64  {
+	var (
+		dis,rui,start float64
+		max float64
+		flag bool=false
+	)
+	start=points[0]
+	max=0
+	if start<=180 {
+		rui=start+180
+		for i:=1;i<len(points);i++ {
+			if points[i]<=rui {
+				dis=points[i]-start
+			} else {
+				if flag {
+					break
+				}
+				dis=360-points[i]+start
+				flag=true
+			}
+			if dis>max {
+				max=dis
+			}
+		}
+	} else {
+		//for i:=1;i<len(points);i++ {
+		//	dis=points[i]-start
+		//	if dis>max {
+		//		max=dis
+		//	}
+		//}
+		max=points[len(points)-1]-start
+	}
+	return max
+}
