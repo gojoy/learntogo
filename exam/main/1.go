@@ -18,7 +18,7 @@ func main() {
 	s[2]=0.2
 	s[3]=0.5
 	 for i:=0;i<100;i++ {
-		fmt.Println(pearls.Roll(s))
+		go fmt.Println(pearls.Roll(s))
 	}
 	fmt.Println(time.Since(start))
 }
