@@ -6,6 +6,7 @@ import (
 	"time"
 	_"learntogo/exam/aiyiqi"
 	"learntogo/exam/pearls"
+	"learntogo/exam/yy"
 )
 
 func main() {
@@ -20,5 +21,6 @@ func main() {
 	 for i:=0;i<100;i++ {
 		go fmt.Println(pearls.Roll(s))
 	}
+	yy.Q1()
 	fmt.Println(time.Since(start))
 }
