@@ -29,5 +29,5 @@ func Q1(s string) int  {
 		count+=2
 	}
 	return count
-
 }
+
