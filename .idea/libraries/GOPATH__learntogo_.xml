@@ -8,14 +8,16 @@
       <root url="file://$PROJECT_DIR$/../ps" />
       <root url="file://$PROJECT_DIR$/../rpc" />
       <root url="file://$PROJECT_DIR$/../test" />
+      <root url="file://$PROJECT_DIR$/../phaul" />
       <root url="file://$PROJECT_DIR$/../h" />
       <root url="file://$PROJECT_DIR$/../hs" />
       <root url="file://$PROJECT_DIR$/../devck" />
+      <root url="file://$PROJECT_DIR$/../stats" />
       <root url="file://$PROJECT_DIR$/../example" />
       <root url="file://$PROJECT_DIR$/../gopkg.in" />
       <root url="file://$PROJECT_DIR$/../criu" />
+      <root url="file://$PROJECT_DIR$/../phaul1" />
       <root url="file://$PROJECT_DIR$/../connsql" />
-      <root url="file://$PROJECT_DIR$/../phaul" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
@@ -26,14 +28,16 @@
       <root url="file://$PROJECT_DIR$/../ps" />
       <root url="file://$PROJECT_DIR$/../rpc" />
       <root url="file://$PROJECT_DIR$/../test" />
+      <root url="file://$PROJECT_DIR$/../phaul" />
       <root url="file://$PROJECT_DIR$/../h" />
       <root url="file://$PROJECT_DIR$/../hs" />
       <root url="file://$PROJECT_DIR$/../devck" />
+      <root url="file://$PROJECT_DIR$/../stats" />
       <root url="file://$PROJECT_DIR$/../example" />
       <root url="file://$PROJECT_DIR$/../gopkg.in" />
       <root url="file://$PROJECT_DIR$/../criu" />
+      <root url="file://$PROJECT_DIR$/../phaul1" />
       <root url="file://$PROJECT_DIR$/../connsql" />
-      <root url="file://$PROJECT_DIR$/../phaul" />
     </SOURCES>
     <excluded>
       <root url="file://$PROJECT_DIR$" />

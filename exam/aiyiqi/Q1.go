@@ -30,4 +30,3 @@ func Q1(s string) int  {
 	}
 	return count
 }
-
