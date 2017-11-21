@@ -9,8 +9,6 @@
       <root url="file://$PROJECT_DIR$/../rpc" />
       <root url="file://$PROJECT_DIR$/../test" />
       <root url="file://$PROJECT_DIR$/../phaul" />
-      <root url="file://$PROJECT_DIR$/../h" />
-      <root url="file://$PROJECT_DIR$/../hs" />
       <root url="file://$PROJECT_DIR$/../devck" />
       <root url="file://$PROJECT_DIR$/../stats" />
       <root url="file://$PROJECT_DIR$/../example" />
@@ -29,8 +27,6 @@
       <root url="file://$PROJECT_DIR$/../rpc" />
       <root url="file://$PROJECT_DIR$/../test" />
       <root url="file://$PROJECT_DIR$/../phaul" />
-      <root url="file://$PROJECT_DIR$/../h" />
-      <root url="file://$PROJECT_DIR$/../hs" />
       <root url="file://$PROJECT_DIR$/../devck" />
       <root url="file://$PROJECT_DIR$/../stats" />
       <root url="file://$PROJECT_DIR$/../example" />
