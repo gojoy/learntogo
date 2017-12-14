@@ -3,7 +3,7 @@ package list
 import (
 	"container/list"
 	"fmt"
-	"container/heap"
+	//"container/heap"
 )
 
 type pos [2]int
