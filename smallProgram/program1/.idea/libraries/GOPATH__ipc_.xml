@@ -1,0 +1,65 @@
+<component name="libraryTable">
+  <library name="GOPATH &lt;ipc&gt;">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/../../downloaddata" />
+      <root url="file://$PROJECT_DIR$/../../protobuf" />
+      <root url="file://E:/inteJproject/src/.idea" />
+      <root url="file://$PROJECT_DIR$/../../ps" />
+      <root url="file://E:/inteJproject/src/book1" />
+      <root url="file://$PROJECT_DIR$/../../rpc" />
+      <root url="file://E:/inteJproject/src/code.google.com" />
+      <root url="file://$PROJECT_DIR$/../../test" />
+      <root url="file://E:/inteJproject/src/game" />
+      <root url="file://$PROJECT_DIR$/../../github.com" />
+      <root url="file://E:/inteJproject/src/music" />
+      <root url="file://$PROJECT_DIR$/../../golang.org" />
+      <root url="file://E:/inteJproject/src/set" />
+      <root url="file://$PROJECT_DIR$/../../devck" />
+      <root url="file://E:/inteJproject/src/github.com" />
+      <root url="file://$PROJECT_DIR$/../../example" />
+      <root url="file://E:/inteJproject/src/webCrawler" />
+      <root url="file://$PROJECT_DIR$/../../webCrawler" />
+      <root url="file://$PROJECT_DIR$/../../gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../../criu" />
+      <root url="file://$PROJECT_DIR$/../../stats" />
+      <root url="file://$PROJECT_DIR$/../../connsql" />
+      <root url="file://$PROJECT_DIR$/../../phaul1" />
+      <root url="file://$PROJECT_DIR$/../../learntogo" />
+      <root url="file://$PROJECT_DIR$/../../phaul" />
+      <root url="file://$PROJECT_DIR$/.." />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../../downloaddata" />
+      <root url="file://$PROJECT_DIR$/../../protobuf" />
+      <root url="file://E:/inteJproject/src/.idea" />
+      <root url="file://$PROJECT_DIR$/../../ps" />
+      <root url="file://E:/inteJproject/src/book1" />
+      <root url="file://$PROJECT_DIR$/../../rpc" />
+      <root url="file://E:/inteJproject/src/code.google.com" />
+      <root url="file://$PROJECT_DIR$/../../test" />
+      <root url="file://E:/inteJproject/src/game" />
+      <root url="file://$PROJECT_DIR$/../../github.com" />
+      <root url="file://E:/inteJproject/src/music" />
+      <root url="file://$PROJECT_DIR$/../../golang.org" />
+      <root url="file://E:/inteJproject/src/set" />
+      <root url="file://$PROJECT_DIR$/../../devck" />
+      <root url="file://E:/inteJproject/src/github.com" />
+      <root url="file://$PROJECT_DIR$/../../example" />
+      <root url="file://E:/inteJproject/src/webCrawler" />
+      <root url="file://$PROJECT_DIR$/../../webCrawler" />
+      <root url="file://$PROJECT_DIR$/../../gopkg.in" />
+      <root url="file://$PROJECT_DIR$/../../criu" />
+      <root url="file://$PROJECT_DIR$/../../stats" />
+      <root url="file://$PROJECT_DIR$/../../connsql" />
+      <root url="file://$PROJECT_DIR$/../../phaul1" />
+      <root url="file://$PROJECT_DIR$/../../learntogo" />
+      <root url="file://$PROJECT_DIR$/../../phaul" />
+      <root url="file://$PROJECT_DIR$/.." />
+    </SOURCES>
+    <excluded>
+      <root url="file://$PROJECT_DIR$" />
+      <root url="file://$PROJECT_DIR$/ipc" />
+    </excluded>
+  </library>
+</component>
