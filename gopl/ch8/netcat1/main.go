@@ -9,16 +9,15 @@ import (
 )
 
 func main() {
-	conn,err:=net.Dial("tcp","localhost:8000")
+	conn,err:=net.Dial("tcp",":8000")
+	defer func() {
+		fmt.Println("close conn")
+		conn.Close()
+	}()
 	if err!=nil {
 		log.Fatal(err)
 	}
-	defer func() {
-		fmt.Println("close conn")
-		if err:=conn.Close();err!=nil {
-			log.Println("close err ",err)
-		}
-	}()
+
 	//if _,err=io.Copy(os.Stdout,conn);err!=nil {
 	//	log.Fatal(err)
 	//}

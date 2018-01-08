@@ -1,17 +1,13 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
-const CREATE int = 1
-const STOP int  = 2
 
-var rdetach  =false
 
 func main() {
-	action:=STOP
-	var (
-		detach=rdetach || (action==CREATE)
-	)
-	fmt.Printf("detach is %v\n",detach)
+	fmt.Printf("argnum %d,args %v\n ",len(os.Args),os.Args)
 }
 
