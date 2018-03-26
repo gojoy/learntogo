@@ -1,8 +1,8 @@
 package main
 
 import (
-	_ "learntogo/hskpholcus/hsklib"
 	"github.com/henrylee2cn/pholcus/exec"
+	_ "learntogo/hskpholcus/hsklib"
 )
 
 func main() {

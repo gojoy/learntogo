@@ -1,11 +1,11 @@
 package main
 
 import (
-	"image/color"
-	"math/cmplx"
-	"image/png"
-	"os"
 	"image"
+	"image/color"
+	"image/png"
+	"math/cmplx"
+	"os"
 )
 
 func main() {

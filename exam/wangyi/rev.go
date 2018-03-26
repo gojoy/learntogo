@@ -9,29 +9,29 @@ import (
 //如果 X = 123，则rev(X) = 321;
 //如果 X = 100，则rev(X) = 1.
 //现在给出整数x和y,要求rev(rev(x) + rev(y))为多少？
-func Q4()  {
+func Q4() {
 	var (
-		x,y int
+		x, y int
 	)
-	fmt.Scanln(&x,&y)
-	fmt.Printf("%d\n",rev(rev(x)+rev(y)))
+	fmt.Scanln(&x, &y)
+	fmt.Printf("%d\n", rev(rev(x)+rev(y)))
 }
 
-func rev(x int) int  {
+func rev(x int) int {
 	var (
-		sx string
+		sx  string
 		res int
 		err error
 	)
-	for x%10==0 {
-		x=x/10
+	for x%10 == 0 {
+		x = x / 10
 	}
 	//logg.Printf("x is %d\n",x)
-	sx=strconv.Itoa(x)
-	sx=revs(sx)
+	sx = strconv.Itoa(x)
+	sx = revs(sx)
 	//logg.Printf("sx is %v\n",sx)
-	res,err=strconv.Atoi(sx)
-	if err!=nil {
+	res, err = strconv.Atoi(sx)
+	if err != nil {
 		logg.Println(err)
 		return -1
 	}
@@ -39,13 +39,13 @@ func rev(x int) int  {
 }
 
 func revs(s string) string {
-	l:=len(s)
-	if l<2 {
+	l := len(s)
+	if l < 2 {
 		return s
 	}
-	b:=[]byte(s)
-	for i:=0;i<l/2;i++ {
-		b[i],b[l-i-1]=b[l-i-1],b[i]
+	b := []byte(s)
+	for i := 0; i < l/2; i++ {
+		b[i], b[l-i-1] = b[l-i-1], b[i]
 	}
 	//logg.Println(string(b))
 	return string(b)

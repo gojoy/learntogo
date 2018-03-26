@@ -52,7 +52,7 @@ func start() error {
 	if err := osutils.SetSubreaper(1); err != nil {
 		return err
 	}
-	p, err := newProcess(flag.Arg(0), flag.Arg(1), flag.Arg(2),flag.Arg(3))
+	p, err := newProcess(flag.Arg(0), flag.Arg(1), flag.Arg(2), flag.Arg(3))
 	if err != nil {
 		return err
 	}
@@ -77,7 +77,7 @@ func start() error {
 			glog.Println("recv signal SIGCHLD")
 			exits, _ := osutils.Reap(false)
 			for _, e := range exits {
-				glog.Println("pid",e.Pid, " status",e.Status)
+				glog.Println("pid", e.Pid, " status", e.Status)
 				if e.Pid == p.pid() {
 					glog.Println(e.Pid, e.Status)
 					exitShim = true

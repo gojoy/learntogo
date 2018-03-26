@@ -1,16 +1,16 @@
 package sougou
 
 import (
-	"fmt"
-	"sort"
 	"bufio"
+	"fmt"
 	"os"
+	"sort"
 	"strconv"
 )
 
 func Q1() {
 	var (
-		n int
+		n   int
 		num float64
 	)
 	fmt.Scanln(&n)
@@ -24,50 +24,49 @@ func Q1() {
 	}
 }
 
-func Q1buf()  {
+func Q1buf() {
 	var (
-		n int
+		n   int
 		num float64
 		err error
 	)
 	fmt.Scanln(&n)
-	points:=make([]float64,n)
-	inputReader:=bufio.NewReader(os.Stdin)
-	for i:=0;i<n;i++ {
-		s,_:=inputReader.ReadString('\n')
+	points := make([]float64, n)
+	inputReader := bufio.NewReader(os.Stdin)
+	for i := 0; i < n; i++ {
+		s, _ := inputReader.ReadString('\n')
 		//fmt.Printf("s is %v\n",s)
-		num,err=strconv.ParseFloat(s[:len(s)-1],64)
-		if err!=nil {
+		num, err = strconv.ParseFloat(s[:len(s)-1], 64)
+		if err != nil {
 			fmt.Println(err)
 		}
-		points[i]=num
+		points[i] = num
 	}
 	fmt.Printf("%.8f", maxdistance1(points))
 }
 
-
-func maxdistance(points []float64) float64  {
+func maxdistance(points []float64) float64 {
 	var (
-		dis,rui,start float64
-		max float64
+		dis, rui, start float64
+		max             float64
 		//flag bool=false
 	)
-	start=points[0]
-	max=0
-	if start<=180 {
-		rui=start+180
-		pos:=sort.SearchFloat64s(points,rui)
-		if points[pos]>rui {
-			dis=360-points[pos]+start
-			max=points[pos-1]-start
-			if dis>max {
-				max=dis
+	start = points[0]
+	max = 0
+	if start <= 180 {
+		rui = start + 180
+		pos := sort.SearchFloat64s(points, rui)
+		if points[pos] > rui {
+			dis = 360 - points[pos] + start
+			max = points[pos-1] - start
+			if dis > max {
+				max = dis
 			}
-		}else {
-			max=points[pos]-start
-			dis=360-points[pos+1]+start
-			if dis>max {
-				max=dis
+		} else {
+			max = points[pos] - start
+			dis = 360 - points[pos+1] + start
+			if dis > max {
+				max = dis
 			}
 		}
 
@@ -92,34 +91,33 @@ func maxdistance(points []float64) float64  {
 		//		max=dis
 		//	}
 		//}
-		max=points[len(points)-1]-start
+		max = points[len(points)-1] - start
 	}
 	return max
 }
 
-
-func maxdistance1(points []float64) float64  {
+func maxdistance1(points []float64) float64 {
 	var (
-		dis,rui,start float64
-		max float64
-		flag bool=false
+		dis, rui, start float64
+		max             float64
+		flag            bool = false
 	)
-	start=points[0]
-	max=0
-	if start<=180 {
-		rui=start+180
-		for i:=1;i<len(points);i++ {
-			if points[i]<=rui {
-				dis=points[i]-start
+	start = points[0]
+	max = 0
+	if start <= 180 {
+		rui = start + 180
+		for i := 1; i < len(points); i++ {
+			if points[i] <= rui {
+				dis = points[i] - start
 			} else {
 				if flag {
 					break
 				}
-				dis=360-points[i]+start
-				flag=true
+				dis = 360 - points[i] + start
+				flag = true
 			}
-			if dis>max {
-				max=dis
+			if dis > max {
+				max = dis
 			}
 		}
 	} else {
@@ -129,7 +127,7 @@ func maxdistance1(points []float64) float64  {
 		//		max=dis
 		//	}
 		//}
-		max=points[len(points)-1]-start
+		max = points[len(points)-1] - start
 	}
 	return max
 }

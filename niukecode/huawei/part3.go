@@ -14,37 +14,36 @@ import "fmt"
 //对于每组测试数据，输出一行，表示最多可以喝的汽水瓶数。如果一瓶也喝不到，输出0。
 func Drink() error {
 	var (
-		num,res int
-		n int
-		err error
+		num, res int
+		n        int
+		err      error
 	)
 
-	deal:= func(x int) int{
+	deal := func(x int) int {
 		var (
-			res int=0
-			redrink int=0
+			res     int = 0
+			redrink int = 0
 		)
-		for x>=3 {
-			redrink=x/3
-			x=x%3+redrink
-			res+=redrink
+		for x >= 3 {
+			redrink = x / 3
+			x = x%3 + redrink
+			res += redrink
 		}
-		if x==2 {
+		if x == 2 {
 			res++
 		}
 		return res
 	}
 
-	n,err=fmt.Scanf("%d",&num)
-	for err==nil && n!=0 {
-		if num==0 {
+	n, err = fmt.Scanf("%d", &num)
+	for err == nil && n != 0 {
+		if num == 0 {
 			break
 		}
-		res=deal(num)
+		res = deal(num)
 		fmt.Println(res)
-		n,err=fmt.Scanf("%d",&num)
+		n, err = fmt.Scanf("%d", &num)
 	}
 	return nil
-
 
 }

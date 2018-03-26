@@ -1,57 +1,57 @@
 package main
 
 import (
-	"github.com/fsnotify/fsnotify"
-	"log"
-	"os"
 	"flag"
 	"fmt"
+	"github.com/fsnotify/fsnotify"
 	"learntogo/smallProgram/unixprogram/fsinotify/inotifyTree"
+	"log"
+	"os"
 )
 
 var (
-	glog=log.New(os.Stderr,"",log.Lshortfile)
-	dir=flag.String("dir","/tmp","add watch dir")
-	err error
+	glog = log.New(os.Stderr, "", log.Lshortfile)
+	dir  = flag.String("dir", "/tmp", "add watch dir")
+	err  error
 )
 
 func main() {
 
-	w,err:=fsnotify.NewWatcher()
-	if err!=nil {
+	w, err := fsnotify.NewWatcher()
+	if err != nil {
 		glog.Fatalln(err)
 	}
 
 	flag.Parse()
 
-
-	if flag.NArg()!=0 {
+	if flag.NArg() != 0 {
 		glog.Fatalln("Usage:fsinotify -dir /tmp")
 	}
 
-	fmt.Printf("dir is %v\n",*dir)
+	fmt.Printf("dir is %v\n", *dir)
 
 	defer w.Close()
-	if err=w.Add(*dir);err!=nil {
-		glog.Fatalln(err)
-	}
-	if err=inotifyTree.AddWatchAll(*dir,w);err!=nil {
+	if err = inotifyTree.AddWatchAll(*dir, w); err != nil {
 		glog.Fatalln(err)
 	}
 
 	fmt.Println("start monitor")
-
-	go inotifyTree.UpdateDirTree(w)
-
 	for {
 		select {
 		case event := <-w.Events:
 			glog.Println(event)
-			if event.Op&fsnotify.Write == fsnotify.Write {
-				glog.Println("modified file:", event.Name)
+			if event.Op&fsnotify.Create == fsnotify.Create {
+				glog.Println("create file:", event.Name)
+				info, err := os.Stat(event.Name)
+				if err == nil && info.IsDir() {
+					glog.Printf("update: add %v to list\n", event.Name)
+					if err = w.Add(event.Name); err != nil {
+						glog.Println(err)
+					}
+				}
 			}
-			if event.Op&fsnotify.Remove==fsnotify.Remove {
-				glog.Println("remove file:",event.Name)
+			if event.Op&fsnotify.Remove == fsnotify.Remove {
+				glog.Println("remove file:", event.Name)
 			}
 
 		case e := <-w.Errors:
@@ -59,6 +59,4 @@ func main() {
 			return
 		}
 	}
-
-
 }

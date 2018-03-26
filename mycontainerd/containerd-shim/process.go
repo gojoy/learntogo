@@ -1,19 +1,19 @@
 package main
 
 import (
-	"errors"
-	"sync"
-	"io"
-	"os"
-	"learntogo/mycontainerd/containerd-shim/specs"
-	"time"
-	"os/exec"
-	"fmt"
-	"path/filepath"
 	"encoding/json"
-	"syscall"
+	"errors"
+	"fmt"
+	"io"
 	"io/ioutil"
+	"learntogo/mycontainerd/containerd-shim/specs"
+	"os"
+	"os/exec"
+	"path/filepath"
 	"strconv"
+	"sync"
+	"syscall"
+	"time"
 )
 
 var errRuntime = errors.New("shim: runtime execution error")
@@ -63,50 +63,49 @@ type process struct {
 	consolePath    string
 	state          *processState
 	runtime        string
-	way				string
+	way            string
 }
 
-func newProcess(id, bundle, runtimeName,startWay string) (*process, error) {
+func newProcess(id, bundle, runtimeName, startWay string) (*process, error) {
 	p := &process{
 		id:      id,
 		bundle:  bundle,
 		runtime: runtimeName,
-		way:startWay,
+		way:     startWay,
 	}
-	s,err:=loadProcessState(bundle)
-	if err!=nil {
-		return nil,err
+	s, err := loadProcessState(bundle)
+	if err != nil {
+		return nil, err
 	}
-	p.state=s
+	p.state = s
 
-	if err=p.openIO();err!=nil {
-		return nil,err
+	if err = p.openIO(); err != nil {
+		return nil, err
 	}
 
-	return p,nil
+	return p, nil
 }
 
-
-func (p *process)create() error {
-	cwd,err:=os.Getwd()
-	if err!=nil {
+func (p *process) create() error {
+	cwd, err := os.Getwd()
+	if err != nil {
 		return err
 	}
-	logPath:=filepath.Join(cwd,"log.text")
+	logPath := filepath.Join(cwd, "log.text")
 	args := append([]string{
 		"--log", logPath,
 		"--log-format", "text",
 	}, p.state.RuntimeArgs...)
 	if p.exec {
 		glog.Fatalln("not support exec!")
-	} else if p.checkpoint!=nil {
+	} else if p.checkpoint != nil {
 		glog.Fatalln("not support checkpoint!")
-	} else if p.way=="create" {
-		args=append(args,"create",
-			"--bundle",p.bundle)
-	} else if p.way=="run" {
-		args=append(args,"run",
-			"--bundle",p.bundle)
+	} else if p.way == "create" {
+		args = append(args, "create",
+			"--bundle", p.bundle)
+	} else if p.way == "run" {
+		args = append(args, "run",
+			"--bundle", p.bundle)
 	}
 	if p.state.NoPivotRoot {
 		args = append(args, "--no-pivot")
@@ -123,8 +122,8 @@ func (p *process)create() error {
 	cmd.Stderr = p.stdio.stderr
 	cmd.SysProcAttr = setPDeathSig()
 
-	glog.Printf("begin start cmd:%v\n",cmd.Args)
-	if err:=cmd.Start();err!=nil {
+	glog.Printf("begin start cmd:%v\n", cmd.Args)
+	if err := cmd.Start(); err != nil {
 		glog.Println(err)
 		if exErr, ok := err.(*exec.Error); ok {
 			if exErr.Err == exec.ErrNotFound || exErr.Err == os.ErrNotExist {
@@ -135,7 +134,6 @@ func (p *process)create() error {
 	}
 	p.stdio.stdout.Close()
 	p.stdio.stderr.Close()
-
 
 	if err := cmd.Wait(); err != nil {
 		glog.Println(err)
@@ -158,16 +156,15 @@ func (p *process)create() error {
 	return nil
 }
 
-
-func (p *process)Close() error {
+func (p *process) Close() error {
 	return p.stdio.Close()
 }
 
-func (p *process)pid() int {
+func (p *process) pid() int {
 	return p.containerPid
 }
 
-func (p *process)delete() error {
+func (p *process) delete() error {
 	if !p.state.Exec {
 		cmd := exec.Command(p.runtime, append(p.state.RuntimeArgs, "delete", p.id)...)
 		cmd.SysProcAttr = setPDeathSig()
@@ -178,8 +175,6 @@ func (p *process)delete() error {
 	}
 	return nil
 }
-
-
 
 type IO struct {
 	Stdin  io.WriteCloser
@@ -205,58 +200,54 @@ func (s *stdio) Close() error {
 	return err
 }
 
-
-
-
 func loadProcessState(bundle string) (*processState, error) {
-	if bundle!="" {
-		if err:=os.Chdir(bundle);err!=nil {
-			return nil,err
+	if bundle != "" {
+		if err := os.Chdir(bundle); err != nil {
+			return nil, err
 		}
 	}
 	var (
 		processSpec specs.ProcessSpec
-		err error
+		err         error
 	)
-	processSpec,err=loadspce()
-	if err!=nil {
+	processSpec, err = loadspce()
+	if err != nil {
 		glog.Println(err)
-		return nil,err
+		return nil, err
 	}
 	return &processState{
-		ProcessSpec:processSpec,
-		Exec:false,
-		Stdin:"/dev/null",
-		Stdout:"/dev/null",
-		Stderr:"/dev/null",
-		RuntimeArgs:[]string{},
-		NoPivotRoot:false,
-		CheckpointPath:"",
-		RootGID:0,
-		RootUID:0,
-	},nil
-
+		ProcessSpec:    processSpec,
+		Exec:           false,
+		Stdin:          "/dev/null",
+		Stdout:         "/dev/null",
+		Stderr:         "/dev/null",
+		RuntimeArgs:    []string{},
+		NoPivotRoot:    false,
+		CheckpointPath: "",
+		RootGID:        0,
+		RootUID:        0,
+	}, nil
 
 }
 
-func loadspce() (specProcess specs.ProcessSpec,err error)  {
-	cf,err:=os.Open("config.json")
+func loadspce() (specProcess specs.ProcessSpec, err error) {
+	cf, err := os.Open("config.json")
 	defer cf.Close()
-	if err!=nil {
+	if err != nil {
 		return
 	}
 	var spec specs.Spec
-	if err=json.NewDecoder(cf).Decode(&spec);err!=nil {
+	if err = json.NewDecoder(cf).Decode(&spec); err != nil {
 		glog.Println(err)
 		return
 	}
-	specProcess=specs.ProcessSpec(*spec.Process)
+	specProcess = specs.ProcessSpec(*spec.Process)
 	return
 
 }
 
-func (p *process)openIO() error {
-	p.stdio=&stdio{}
+func (p *process) openIO() error {
+	p.stdio = &stdio{}
 
 	var (
 		uid = p.state.RootUID
@@ -272,14 +263,14 @@ func (p *process)openIO() error {
 		glog.Println("not support terminal!")
 		return errors.New("not support terminal")
 	}
-	i,err:=p.initializeIO(uid)
-	if err!=nil {
+	i, err := p.initializeIO(uid)
+	if err != nil {
 		glog.Println(err)
 		return err
 	}
-	p.shimIO=i
+	p.shimIO = i
 
-	for name,dest:=range map[string]func(f *os.File) {
+	for name, dest := range map[string]func(f *os.File){
 		p.state.Stdout: func(f *os.File) {
 			p.Add(1)
 			go func() {
@@ -290,13 +281,13 @@ func (p *process)openIO() error {
 		p.state.Stderr: func(f *os.File) {
 			p.Add(1)
 			go func() {
-				io.Copy(f,i.Stderr)
+				io.Copy(f, i.Stderr)
 				p.Done()
 			}()
 		},
 	} {
-		f,err:=os.OpenFile(name,syscall.O_RDWR, 0)
-		if err!=nil {
+		f, err := os.OpenFile(name, syscall.O_RDWR, 0)
+		if err != nil {
 			return err
 		}
 		dest(f)

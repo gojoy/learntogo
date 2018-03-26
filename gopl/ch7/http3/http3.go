@@ -2,20 +2,19 @@ package main
 
 import (
 	"fmt"
-	"net/http"
 	"log"
+	"net/http"
 )
 
 type dollars float32
 
 func (d dollars) String() string { return fmt.Sprintf("$%.2f", d) }
 
-
 func main() {
 	db := database{"shoes": 50, "socks": 5}
 	mux := http.NewServeMux()
-	mux.HandleFunc("/llist",db.list)
-	mux.HandleFunc("/pprice",db.price)
+	mux.HandleFunc("/llist", db.list)
+	mux.HandleFunc("/pprice", db.price)
 	mux.Handle("/list", http.HandlerFunc(db.list))
 	mux.Handle("/price", http.HandlerFunc(db.price))
 	log.Fatal(http.ListenAndServe("localhost:8000", mux))
@@ -39,4 +38,3 @@ func (db database) price(w http.ResponseWriter, req *http.Request) {
 	}
 	fmt.Fprintf(w, "%s\n", price)
 }
-

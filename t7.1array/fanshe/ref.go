@@ -2,20 +2,20 @@ package main
 
 import (
 	"fmt"
-	"reflect"
 	"os"
+	"reflect"
 	"strconv"
 )
 
 func main() {
 	fmt.Printf("fool\n")
-	t:=reflect.TypeOf(3)
+	t := reflect.TypeOf(3)
 	fmt.Println(t.Kind())
-	w:=os.Stdin
-	v:=reflect.ValueOf(w)
-	t=reflect.TypeOf(w)
-	fmt.Printf("v is %v,%v\n",uint64(v.Pointer()),v)
-	Display("stdin",w)
+	w := os.Stdin
+	v := reflect.ValueOf(w)
+	t = reflect.TypeOf(w)
+	fmt.Printf("v is %v,%v\n", uint64(v.Pointer()), v)
+	Display("stdin", w)
 
 }
 

@@ -38,7 +38,7 @@ func deal(all []component) {
 	ids := list.New()
 	ids.PushBack(all[0][2])
 	s = all[0][0]
-	for i = all[0][0]+1; i <= all[len(all)-1][1]; i++ {
+	for i = all[0][0] + 1; i <= all[len(all)-1][1]; i++ {
 		//fmt.Printf("i is %v\n",i)
 		if id, ok := sm[i]; ok {
 
@@ -70,6 +70,6 @@ func getelem(v int, l *list.List) *list.Element {
 			return e
 		}
 	}
-	fmt.Printf("cannot find %v\n",v)
+	fmt.Printf("cannot find %v\n", v)
 	return nil
 }

@@ -16,17 +16,17 @@ func main() {
 	app.Usage = "make easy"
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
-			Name:"l",
-			Value:"e",
-			Usage:"greet for lang",
-			Destination:&lang,
+			Name:        "l",
+			Value:       "e",
+			Usage:       "greet for lang",
+			Destination: &lang,
 		},
 	}
-	app.Commands=[]cli.Command{
+	app.Commands = []cli.Command{
 		start,
 	}
-	app.Before= func(c *cli.Context) error {
-		fmt.Printf("before func args is %v\n",c.Args())
+	app.Before = func(c *cli.Context) error {
+		fmt.Printf("before func args is %v\n", c.Args())
 		return nil
 	}
 	app.Action = func(c *cli.Context) {

@@ -55,15 +55,15 @@ func doWorkTime(pgs []programmer, ideas []idea, N int) int {
 		return 0
 	}
 	var (
-		time  int = -1
-		still bool=false
+		time  int  = -1
+		still bool = false
 	)
 
 	for {
 		time++
 		doWork(pgs, time)
 		if still == true {
-			logg.Printf("all idea have done ideas is %v\n",ideas)
+			logg.Printf("all idea have done ideas is %v\n", ideas)
 			break
 		}
 		for j := 0; j < N; j++ {

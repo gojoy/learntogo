@@ -1,12 +1,12 @@
 package main
 
 import (
-	"net"
-	"time"
-	"fmt"
-	"strings"
 	"bufio"
+	"fmt"
 	"log"
+	"net"
+	"strings"
+	"time"
 )
 
 func echo(c net.Conn, shout string, delay time.Duration) {

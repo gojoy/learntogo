@@ -1,45 +1,45 @@
 package main
 
 import (
-	"path/filepath"
-	"net"
-	"log"
-	"os"
-	"io"
 	"fmt"
+	"io"
+	"log"
+	"net"
+	"os"
+	"path/filepath"
 )
 
 var (
-	glog=log.New(os.Stderr,"unixsocket: ",log.Lshortfile)
+	glog = log.New(os.Stderr, "unixsocket: ", log.Lshortfile)
 )
 
 func main() {
 	var (
-		err error
-		sname="my.sock"
-		dir="/opt/gofile/bin/tmp"
+		err   error
+		sname = "my.sock"
+		dir   = "/opt/gofile/bin/tmp"
 	)
-	fsname:=filepath.Join(dir,sname)
-	unixAddr,err:=net.ResolveUnixAddr("unix",fsname)
-	if err!=nil {
+	fsname := filepath.Join(dir, sname)
+	unixAddr, err := net.ResolveUnixAddr("unix", fsname)
+	if err != nil {
 		glog.Fatalln(err)
 	}
-	conn,err:=net.DialUnix("unix",nil,unixAddr)
-	if err!=nil {
+	conn, err := net.DialUnix("unix", nil, unixAddr)
+	if err != nil {
 		glog.Fatalln(err)
 	}
 
-	_,err=conn.Write([]byte("send by client!!"))
-	if err!=nil {
-		glog.Printf("write err:%v\n",err)
+	_, err = conn.Write([]byte("send by client!!"))
+	if err != nil {
+		glog.Printf("write err:%v\n", err)
 	}
 	fmt.Printf("localaddr is: %v\nremotaddr is: %v\n",
-		conn.LocalAddr(),conn.RemoteAddr())
-	mustCopy(os.Stdout,conn)
+		conn.LocalAddr(), conn.RemoteAddr())
+	mustCopy(os.Stdout, conn)
 }
 
-func mustCopy(dst io.Writer,src io.Reader)  {
-	if _,err:=io.Copy(dst,src);err!=nil {
+func mustCopy(dst io.Writer, src io.Reader) {
+	if _, err := io.Copy(dst, src); err != nil {
 		glog.Println(err)
 		return
 	}

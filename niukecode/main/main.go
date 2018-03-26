@@ -11,14 +11,11 @@ import (
 
 //this is main
 func main() {
-	t1:=time.Now()
+	t1 := time.Now()
 
-	
 	//print("begin\n")
 	//huawei.LCS()
 	toutiao.Two()
 
 	fmt.Println(time.Now().Sub(t1))
 }
-
-

@@ -2,7 +2,7 @@ package wangyi
 
 import "fmt"
 
-func Q6()  {
+func Q6() {
 	var (
 		n int
 	)
@@ -10,12 +10,12 @@ func Q6()  {
 	fmt.Println(buy(n))
 }
 
-func buy(n int) int  {
-	if n%2==1 {
+func buy(n int) int {
+	if n%2 == 1 {
 		return -1
 	}
-	if n%8==0 {
-		return n/8
+	if n%8 == 0 {
+		return n / 8
 	}
-	return n/8+1
+	return n/8 + 1
 }

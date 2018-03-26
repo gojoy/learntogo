@@ -1,9 +1,9 @@
 package github
 
 import (
-	"net/http"
-	"fmt"
 	"encoding/json"
+	"fmt"
+	"net/http"
 	"net/url"
 	"strings"
 )

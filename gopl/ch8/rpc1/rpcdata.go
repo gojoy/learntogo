@@ -2,21 +2,21 @@ package rpc1
 
 import "errors"
 
-type Args struct{
+type Args struct {
 	A, B int
 }
 
-type Quotient struct{
+type Quotient struct {
 	Quo, Rem int
 }
 type Arith int
 
-func(t *Arith) Multiply(args *Args, reply *int) error {
+func (t *Arith) Multiply(args *Args, reply *int) error {
 	*reply = args.A * args.B
 	return nil
 }
 
-func(t *Arith) Divide(args *Args, quo *Quotient) error {
+func (t *Arith) Divide(args *Args, quo *Quotient) error {
 	if args.B == 0 {
 		return errors.New("divide by zero")
 	}

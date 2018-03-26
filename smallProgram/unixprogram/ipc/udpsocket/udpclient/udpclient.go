@@ -1,42 +1,40 @@
 package main
 
 import (
-	"log"
-	"os"
-	"net"
 	"fmt"
+	"log"
+	"net"
+	"os"
 )
 
 var (
-	glog=log.New(os.Stderr,"udpserver: ",log.Lshortfile)
+	glog = log.New(os.Stderr, "udpserver: ", log.Lshortfile)
 )
 
 func main() {
-	buf:=make([]byte,512)
-	updAddr,err:=net.ResolveUDPAddr("udp","localhost:8001")
-	if err!=nil {
+	buf := make([]byte, 512)
+	updAddr, err := net.ResolveUDPAddr("udp", "localhost:8001")
+	if err != nil {
 		glog.Fatalln(err)
 	}
 
-	c,err:=net.DialUDP("udp",nil,updAddr)
-	if err!=nil {
+	c, err := net.DialUDP("udp", nil, updAddr)
+	if err != nil {
 		glog.Println(err)
 	}
 
 	fmt.Printf("localaddr is: %v\nremotaddr is: %v\n",
-		c.LocalAddr(),c.RemoteAddr())
+		c.LocalAddr(), c.RemoteAddr())
 
-	_,err=c.Write([]byte("hi"))
+	_, err = c.Write([]byte("hi"))
 	//_,err=c.WriteTo([]byte("hi"),c.RemoteAddr())
-	if err!=nil {
+	if err != nil {
 		glog.Fatalln(err)
 	}
 
-	n,_,err:=c.ReadFromUDP(buf[0:])
-	if err!=nil {
+	n, _, err := c.ReadFromUDP(buf[0:])
+	if err != nil {
 		glog.Println(err)
 	}
-	fmt.Printf("recv:%v\n",string(buf[:n]))
+	fmt.Printf("recv:%v\n", string(buf[:n]))
 }
-
-

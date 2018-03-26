@@ -1,8 +1,8 @@
 package main
 
 import (
-	"runtime"
 	"fmt"
+	"runtime"
 	"time"
 )
 
@@ -11,15 +11,15 @@ func init() {
 }
 
 func main() {
-	var x,y int
+	var x, y int
 	go func() {
-		x=1
-		fmt.Printf("y:%v\t",y)
+		x = 1
+		fmt.Printf("y:%v\t", y)
 	}()
 
 	go func() {
-		y=1
-		fmt.Printf("x:%v\t",x)
+		y = 1
+		fmt.Printf("x:%v\t", x)
 	}()
-	time.Sleep(100*time.Millisecond)
+	time.Sleep(100 * time.Millisecond)
 }
