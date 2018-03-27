@@ -7,7 +7,7 @@ import (
 )
 
 func init() {
-	log.SetFlags(log.Ltime | log.Lshortfile)
+	log.SetFlags(log.Lmicroseconds | log.Lshortfile)
 }
 
 const p = "/opt/dict.bin"
@@ -17,58 +17,49 @@ func main() {
 		err error
 	)
 	log.Println("start")
-	//if err:=loadmap("/opt/dict.gob");err!=nil {
-	//	log.Println(err)
-	//}
-	//return
-	path := flag.String("dir", "", "read page file")
-	path1 := flag.String("dir1", "", "comp img file")
+
+	path := flag.String("dir", "", "common file")
+	path1 := flag.String("dir1", "", "copy src file")
+	path2:=flag.String("tar","","copy target file")
 	flag.Parse()
 	log.Println(*path, *path1)
+	//path: common file
+	log.Println("start get maptable")
 	dict1, err := dedep.GetTB(*path)
 	if err != nil {
 		log.Println(err)
 		return
 	}
-	if err = dedep.DumpToFile(dict1, p); err != nil {
-		log.Println(err)
-		return
-	}
-	if _, err = dedep.LoadDict(p); err != nil {
-		log.Println(err)
-		return
-	}
-	res,err:=dedep.DoDep(*path1,dict1)
+
+	log.Println("save dict")
+	err=dedep.DumpToFile(dict1,"/opt/dict.gob")
 	if err!=nil {
 		log.Println(err)
 		return
 	}
-	if err=dedep.SaveJson(res);err!=nil {
+	log.Println("start make diff file")
+	//path1: rsync file
+	//ms:diff file
+	ms,err:=dedep.DoDep(*path1,dict1)
+	if err!=nil {
 		log.Println(err)
+		return
 	}
+	log.Println("save message")
+	err=dedep.SaveBin(ms,"/opt/ms.gob")
+	if err!=nil {
+		log.Println(err)
+		return
+	}
+	//log.Printf("fisrs is %v\nfirst offset is %v\n",dedep.FirstMd5,dedep.FirstOffset)
 
 
-	return
-	dict, err := getMd5Page(*path)
-	if err != nil {
+	log.Println("start gener file")
+	err=dedep.GenerFileByOffset(ms,*path2,*path)
+	if err!=nil {
 		log.Println(err)
+		return
 	}
+	log.Println("done!")
 
-	if err = getSameMd5(*path1, dict); err != nil {
-		log.Println(err)
-	}
-	if err = save(dict); err != nil {
-		log.Println(err)
-	}
-	return
-	//d,err:=GetPages(*path)
-	//if err!=nil {
-	//	log.Println(err)
-	//}
-	//log.Printf("now comp %v\n",*path1)
-	//return
-	//err=GetSame(*path1,d)
-	//if err!=nil {
-	//	log.Println(err)
-	//}
 }
